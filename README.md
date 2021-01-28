@@ -1,7 +1,7 @@
 # Flying Navigation System Support
 
 ## Documentation
-Please see here for [full](https://blendersleuth.github.io/FlyingNavSystemSite/) documentation.
+Please see [here](https://blendersleuth.github.io/FlyingNavSystemSite/) for full documentation.
 
 ## Demo Projects
 Download the FlyingDemo project and play around with it. A packaged version is available from [Releases](https://github.com/BlenderSleuth/FlyingNavSystemSupport/releases).
