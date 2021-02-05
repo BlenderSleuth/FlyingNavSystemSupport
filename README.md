@@ -9,4 +9,4 @@ Download the FlyingDemo project and play around with it. A packaged version is a
 There is also a benchmark project which I used for the benchmarks [here](https://blendersleuth.github.io/FlyingNavSystemSite/benchmarks.html).
 
 ## Reporting Issues
-For bugs or feature requests please open on [Issue](https://github.com/BlenderSleuth/FlyingNavSystemSupport/issues) on github
+For bugs or feature requests please open an [issue](https://github.com/BlenderSleuth/FlyingNavSystemSupport/issues) on github
