@@ -164,26 +164,32 @@ void ABenchmarkActor::Benchmark()
 				}
 
 				// Raycast benchmark
-				FVector HitLocation;
-				bool Hit;
-				StartTime = FPlatformTime::Seconds();
-				for (int32 k = 0; k < 200; k++) // Multiple trials
+				double OctreeRaycastTime = 0., LineTraceTime = 0.;
+				if (bBenchmarkRaycasts)
 				{
-					Hit = FlyingNavData->OctreeRaycast(RayStart, RayEnd, HitLocation);
-				}
-				EndTime = FPlatformTime::Seconds();
-				const double OctreeRaycastTime = (EndTime - StartTime) / 200.;
-				//UE_LOG(LogTemp, Warning, TEXT("Octree Hit: %d"), Hit);
+					const int32 NumRaycastTrials = 200;
+					
+					FVector HitLocation;
+					bool Hit;
+					StartTime = FPlatformTime::Seconds();
+					for (int32 k = 0; k < NumRaycastTrials; k++) // Multiple trials
+					{
+				        Hit = FlyingNavData->OctreeRaycast(RayStart, RayEnd, HitLocation);
+				    }
+				    EndTime = FPlatformTime::Seconds();
+				    OctreeRaycastTime = (EndTime - StartTime) / static_cast<double>(NumRaycastTrials);
+				    //UE_LOG(LogTemp, Warning, TEXT("Octree Hit: %d"), Hit);
 
-				FHitResult HitResult;
-				StartTime = FPlatformTime::Seconds();
-				for (int32 k = 0; k < 200; k++) // Multiple trials
-				{
-					Hit = GetWorld()->LineTraceSingleByChannel(HitResult, RayStart, RayEnd, ECC_WorldStatic);
+				    FHitResult HitResult;
+				    StartTime = FPlatformTime::Seconds();
+				    for (int32 k = 0; k < NumRaycastTrials; k++) // Multiple trials
+    				{
+			            Hit = GetWorld()->LineTraceSingleByChannel(HitResult, RayStart, RayEnd, ECC_WorldStatic);
+			        }
+			        EndTime = FPlatformTime::Seconds();
+			        LineTraceTime = (EndTime - StartTime) / static_cast<double>(NumRaycastTrials);
+			        //UE_LOG(LogTemp, Warning, TEXT("LineTrace Hit: %d"), Hit);
 				}
-				EndTime = FPlatformTime::Seconds();
-				const double LineTraceTime = (EndTime - StartTime) / 200.;
-				//UE_LOG(LogTemp, Warning, TEXT("LineTrace Hit: %d"), Hit);
 
 				FBenchmarkTableRow TableRow;
 				const FName RowName(*FString::Printf(TEXT("%d"), NumLayers));

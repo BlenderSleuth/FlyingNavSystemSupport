@@ -116,6 +116,9 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Benchmark)
 	bool bBenchmarkOnBeginPlay;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Benchmark)
+	bool bBenchmarkRaycasts;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Benchmark)
 	TArray<float> BenchmarkResolutions;
