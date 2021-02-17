@@ -136,7 +136,7 @@ public:
 	FFilePath SettingsPath;
 
 	UPROPERTY(VisibleAnywhere, Category = Benchmark)
-	FString AbsolutePath;
+	FString AbsoluteSettingsPath;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Benchmark)
 	FDirectoryPath OutputPath;
@@ -152,7 +152,7 @@ public:
     void ClearViewport() const;
 	
 	UFUNCTION(CallInEditor, Category = Benchmark)
-    void UpdateSettingsPath();
+    void SetAbsoluteSettingsPath();
 #endif // WITH_EDITOR
 	
 	virtual void BeginPlay() override;
@@ -162,4 +162,5 @@ public:
 protected:
 	UPROPERTY()
 	class AFlyingNavigationData* FlyingNavData;
+	FSVODataConstPtr SVOData;
 };
