@@ -82,7 +82,7 @@ void ABenchmarkActor::Benchmark()
 		for (int i = 0; i < BenchmarkResolutions.Num(); i++)
 		{
 			FlyingNavData->MaxDetailSize = BenchmarkResolutions[i];
-			const int32 NumLayers = FlyingNavSystem::GetNumLayers(FlyingNavData->GetOctreeSideLength(), BenchmarkResolutions[i]);
+			const int32 NumLayers = FlyingNavSystem::GetNumLayers(FlyingNavData->GetOctreeSideLength(), BenchmarkResolutions[i], 0);
 			const int32 NumVoxels = FMath::Pow(8, NumLayers);
 
 			double StartTime = FPlatformTime::Seconds();
